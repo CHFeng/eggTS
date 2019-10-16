@@ -8,11 +8,16 @@ export default (appInfo: EggAppInfo) => {
   config.keys = appInfo.name + '_1570592154724_9120';
 
   // add your egg config in here
-  config.middleware = [];
+  config.middleware = [ 'myMiddleware' ];
 
   // add your special config in here
   const bizConfig = {
     sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`,
+
+    myMiddleware: {
+      name: 'myTestMiddleware',
+      value: 10,
+    },
   };
 
   // the return config will combines to EggAppConfig

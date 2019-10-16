@@ -2,6 +2,8 @@ import { Service } from 'egg';
 
 export default class CalApi extends Service {
     public add(para1: number, para2: number): number {
+        const { ctx } = this;
+        ctx.logger.info('in service/cal');
         return para1 + para2;
     }
 
