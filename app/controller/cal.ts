@@ -1,5 +1,4 @@
 import { Controller } from 'egg';
-import { Client } from 'cassandra-driver';
 
 export default class CalController extends Controller {
   add() {
@@ -26,18 +25,8 @@ export default class CalController extends Controller {
   }
 
   async query() {
-    const { ctx, app } = this;
-    const db = new Client({ contactPoints: [ '127.0.0.1' ], localDataCenter: 'datacenter1', keyspace: 'mycasdb' });
-    const query = 'SELECT * FROM user';
-    const dbresult = await db.execute(query);
-    app.logger.info(dbresult);
-    let field = '';
-
-    dbresult.rows.map(content => {
-      app.logger.info(content);
-      field += `id: ${content.id} user_name: ${content.user_name}`;
-    });
-
-    ctx.body = `query content: ${field}`;
+    const { ctx } = this;
+    const result = await ctx.service.cal.query();
+    ctx.body = result;
   }
 }
