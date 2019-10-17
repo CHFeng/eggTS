@@ -18,6 +18,29 @@ export default (appInfo: EggAppInfo) => {
       name: 'myTestMiddleware',
       value: 10,
     },
+
+    cassandra: {
+      client: {
+        host: '127.0.0.1',
+        port: 9042,
+        localDataCenter: 'datacenter1',
+        keyspace: 'mycasdb',
+      },
+    },
+
+    mysql: {
+      client: {
+        host: 'mysql.com',
+        port: '3306',
+        user: 'test_user',
+        password: 'test_password',
+        database: 'test',
+      },
+      // load into app, default is open
+      app: true,
+      // load into agent, default is close
+      agent: false,
+    },
   };
 
   // the return config will combines to EggAppConfig

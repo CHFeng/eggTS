@@ -1,5 +1,5 @@
 import { Service } from 'egg';
-import { Client } from 'cassandra-driver';
+// import { Client } from 'cassandra-driver';
 
 export default class CalApi extends Service {
     public add(para1: number, para2: number): number {
@@ -17,15 +17,16 @@ export default class CalApi extends Service {
     }
 
     async query() {
-        const db = new Client({ contactPoints: [ '127.0.0.1' ], localDataCenter: 'datacenter1', keyspace: 'mycasdb' });
+        const { app } = this;
         const query = 'SELECT * FROM user';
-        db.connect();
-        const dbresult = await db.execute(query);
-        db.shutdown();
+        // const db = new Client({ contactPoints: [ '127.0.0.1' ], localDataCenter: 'datacenter1', keyspace: 'mycasdb' });
+        // db.connect();
+        const dbresult = await app.cassandra.execute(query);
+        // db.shutdown();
         let field = '<h1>query content:</h1><ul>';
 
         dbresult.rows.map(content => {
-          // app.logger.info(content);
+          app.logger.info(content);
           field += `<li>id: ${content.id} user_name: ${content.user_name}</li>`;
         });
 
