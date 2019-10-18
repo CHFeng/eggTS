@@ -28,6 +28,13 @@ export default (appInfo: EggAppInfo) => {
       },
     },
 
+    hello: {
+      client: {
+        name: 'daniel',
+        text: 'plugin Test',
+      },
+    },
+
     mysql: {
       client: {
         host: 'mysql.com',

@@ -15,6 +15,10 @@ const plugin: EggPlugin = {
     enable: true,
     path: Path.join(__dirname, '../lib/plugin/egg-cassandra'),
   },
+  hello: {
+    enable: true,
+    path: Path.join(__dirname, '../lib/plugin/hello'),
+  },
 };
 
 export default plugin;
