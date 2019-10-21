@@ -12,7 +12,7 @@ const plugin: EggPlugin = {
     package: 'egg-mysql',
   },
   cassandra: {
-    enable: true,
+    enable: false,
     path: Path.join(__dirname, '../lib/plugin/egg-cassandra'),
   },
   hello: {
